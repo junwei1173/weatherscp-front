@@ -14,7 +14,7 @@ function LoginRegister({ onLogin }) {
   setSuccess('');
   try {
     const endpoint = isRegister ? 'register' : 'login';
-    const res = await axios.post(`http://localhost:5050/${endpoint}`, {
+    const res = await axios.post(`https://weatherscp-back.onrender.com/${endpoint}`, {
       username,
       password,
     });
