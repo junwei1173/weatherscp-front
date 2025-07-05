@@ -144,7 +144,7 @@ if (!geoRes.data.length) {
 
 const { lat, lon } = geoRes.data[0];
 
-const eventRes = await axios.get('http://localhost:5050/events', {
+const eventRes = await axios.get('https://weatherscp-back.onrender.com/events', {
   params: {
     lat,
     lon,
@@ -185,7 +185,7 @@ setTripEvents(eventRes.data.events || []);
 
   const deleteSearch = async (id) => {
     try {
-      await axios.delete(`http://localhost:5050/history/${id}`);
+      await axios.delete(`https://weatherscp-back.onrender.com/history/${id}`);
       setHistory((prev) => prev.filter((item) => item._id !== id));
     } catch (err) {
       console.error('Failed to delete search:', err);
@@ -195,7 +195,7 @@ setTripEvents(eventRes.data.events || []);
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get('http://localhost:5050/history', {
+        const res = await axios.get('https://weatherscp-back.onrender.com/history', {
           params: { userId }
         });
         setHistory(res.data);
@@ -211,7 +211,7 @@ setTripEvents(eventRes.data.events || []);
 
   const deleteAllHistory = async () => {
   try {
-    await axios.delete(`http://localhost:5050/history/all`, {
+    await axios.delete(`https://weatherscp-back.onrender.com/history/all`, {
       params: { userId }
     });
     setHistory([]); // Clear the local state so UI updates
@@ -230,7 +230,7 @@ setTripEvents(eventRes.data.events || []);
     setSelectedHistoryId(id || null);
 
     try {
-      const response = await axios.get('http://localhost:5050/weather', {
+      const response = await axios.get('https://weatherscp-back.onrender.com/weather', {
         params: {
           city: cityToSearch,
           userId,
@@ -248,12 +248,12 @@ setEventMarkers([]); // Clear old event pins when searching
 
 
       if (!isHistoryClick) {
-        await axios.post('http://localhost:5050/history', {
+        await axios.post('https://weatherscp-back.onrender.com/history', {
           city: cityToSearch,
           userId
         });
 
-        await axios.post('http://localhost:5050/ai-suggestion', {
+        await axios.post('https://weatherscp-back.onrender.com/ai-suggestion', {
           city: weatherData.name,
           temp: weatherData.main.temp,
           condition: weatherData.weather[0].main,
@@ -263,7 +263,7 @@ setEventMarkers([]); // Clear old event pins when searching
 
       
 
-      const updated = await axios.get('http://localhost:5050/history', {
+      const updated = await axios.get('https://weatherscp-back.onrender.com/history', {
         params: { userId }
       });
       setHistory(updated.data);
