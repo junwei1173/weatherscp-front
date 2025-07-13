@@ -82,7 +82,7 @@ function MapUpdater({ center }) {
 
   React.useEffect(() => {
     if (center) {
-      map.flyTo(center, 10); // Adjust zoom level if you like
+      map.flyTo(center, 10); 
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [center]);
@@ -179,7 +179,7 @@ setTripEvents(eventRes.data.events || []);
   const toggleSuggestion = (id) => {
     setVisibleSuggestions((prev) => ({
       ...prev,
-      [id]: !prev[id], // toggle this one
+      [id]: !prev[id], 
     }));
   };
 
@@ -214,7 +214,7 @@ setTripEvents(eventRes.data.events || []);
     await axios.delete(`https://weatherscp-back.onrender.com/history/all`, {
       params: { userId }
     });
-    setHistory([]); // Clear the local state so UI updates
+    setHistory([]); 
   } catch (err) {
     console.error('Failed to delete all history:', err);
     alert('Failed to delete all history.');
@@ -244,7 +244,7 @@ setTripEvents(eventRes.data.events || []);
       const { lon, lat } = weatherData.coord;
 setMapCenter([lat, lon]);
 setCityMarker({ lat, lon, name: weatherData.name });
-setEventMarkers([]); // Clear old event pins when searching
+setEventMarkers([]); 
 
 
       if (!isHistoryClick) {
@@ -412,8 +412,8 @@ setEventMarkers([]); // Clear old event pins when searching
                     <>
                       <div style={{
                         fontSize: '0.9rem',
-  color: '#222', // Force dark readable text
-  backgroundColor: '#f4f4f4', // Optional: light background for contrast
+  color: '#222', 
+  backgroundColor: '#f4f4f4',
   marginTop: '0.5rem',
   padding: '0.5rem',
   borderRadius: '6px',
@@ -464,8 +464,8 @@ setEventMarkers([]); // Clear old event pins when searching
                       {visibleSuggestions[item._id] && (
   <div style={{
       fontSize: '0.9rem',
-  color: '#222', // Force dark readable text
-  backgroundColor: '#f4f4f4', // Optional: light background for contrast
+  color: '#222', 
+  backgroundColor: '#f4f4f4',
   marginTop: '0.5rem',
   padding: '0.5rem',
   borderRadius: '6px',
