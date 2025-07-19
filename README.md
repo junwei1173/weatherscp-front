@@ -1,1 +1,1 @@
-weatherscopejun.vercel.app
+https://weatherscopejun.vercel.app/
